@@ -1,7 +1,7 @@
 from typing import Dict, Type, TYPE_CHECKING
 
 from . import BaseConfig
-from flower.core import utils, exceptions
+from .. import utils, exceptions
 
 if TYPE_CHECKING:
     from . import BaseConfigLoader

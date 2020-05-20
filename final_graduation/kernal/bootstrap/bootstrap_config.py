@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List, Dict
 
-import flower.core.config as cfg
+from .. import config as cfg
 
 
 class ConfigMeta(cfg.BaseConfig):

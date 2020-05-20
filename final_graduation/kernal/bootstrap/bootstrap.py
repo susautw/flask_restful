@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Dict
 
-import flower.core.config as cfg
+from .. import config as cfg
 from .bootstrap_config import BootstrapConfig
 
 
