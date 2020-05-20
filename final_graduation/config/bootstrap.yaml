@@ -1,0 +1,3 @@
+configs:
+  - path: .config/exception.yaml
+  - name: exception

@@ -1,0 +1,7 @@
+codes:
+  #system-related
+  UnknownError: -1
+
+  # database-query-related
+  NoDataFound: -200
+  ItemAlreadyExists: -201

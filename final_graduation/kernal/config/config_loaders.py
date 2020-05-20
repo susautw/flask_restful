@@ -6,12 +6,12 @@ import yaml
 from abc import ABC, abstractmethod
 
 if TYPE_CHECKING:
-    from ..config import BaseConfig
+    from ..config import Config
 
 
 class BaseConfigLoader(ABC):
     @abstractmethod
-    def load(self, config: 'BaseConfig') -> 'BaseConfig':
+    def load(self, config: 'Config') -> 'Config':
         pass
 
 
@@ -21,7 +21,7 @@ class DictBasedConfigLoader(BaseConfigLoader):
     def get_dict(self) -> Dict:
         pass
 
-    def load(self, config: 'BaseConfig'):
+    def load(self, config: 'Config'):
         for key, value in self.get_dict().items():
             config[key] = value
 
