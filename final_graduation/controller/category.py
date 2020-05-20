@@ -8,6 +8,7 @@ class CategoryController(Resource):
     def get(self):
         res = Response()
         with res:
+            # TODO test it can or can't automatically convert to json.
             res.result = list(models.Category.get_all_categories())
         return res
 

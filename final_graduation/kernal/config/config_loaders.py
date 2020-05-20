@@ -1,5 +1,6 @@
+from argparse import Namespace
 from pathlib import Path
-from typing import Dict, Union, TextIO, TYPE_CHECKING
+from typing import Dict, TYPE_CHECKING
 
 import yaml
 from abc import ABC, abstractmethod
@@ -50,6 +51,16 @@ class YamlConfigLoader(DictBasedConfigLoader, PathBasedConfigLoader):
 
         stream.close()
         return data
+
+
+class NamespaceConfigLoader(DictBasedConfigLoader):
+    namespace: Namespace
+
+    def __init__(self, namespace: Namespace):
+        self.namespace = namespace
+
+    def get_dict(self) -> Dict:
+        return vars(self.namespace)
 
 
 class DictConfigLoader(DictBasedConfigLoader):
