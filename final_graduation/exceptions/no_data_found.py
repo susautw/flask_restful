@@ -1,5 +1,3 @@
-from typing import Type
-
 from final_graduation.kernal import AppException
 
 
