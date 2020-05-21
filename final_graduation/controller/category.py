@@ -9,19 +9,19 @@ class CategoryController(Resource):
     def get(self):
         res = Response()
         with res:
-            # TODO test it can or can't automatically convert to json.
-            res.result = list(models.Category.get_all_categories())
+            res.result = [category.to_json() for category in models.Category.get_all_categories()]
         return res
 
     def post(self):
         res = Response()
         with res:
             args = self._get_post_req_parser().parse_args()
-            parent = models.Category.get_by_id(ObjectId(args['parent']))
+            parent_id = args['parent']
+            parent = models.Category.get_by_id(ObjectId(parent_id)) if parent_id is not None else None
             category = models.Category.create(args['name'], args['description'], parent)
             category.save()
             res.result = {
-                'inserted_id': category.id
+                'inserted_id': str(category.id)
             }
         return res
 
@@ -38,5 +38,6 @@ class CategoryItemController(Resource):
     def get(self, category_id: str):
         res = Response()
         with res:
-            res.result = models.Category.get_by_id(ObjectId(category_id))
+            res.result = models.Category.get_by_id(ObjectId(category_id)).to_json()
         return res
+

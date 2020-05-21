@@ -1,0 +1,7 @@
+configs:
+  - path: ./configs/exception.yaml
+    name: exception
+  - path: ./configs/app.yaml
+    name: app
+  - path: ./configs/database.yaml
+    name: database

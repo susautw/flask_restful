@@ -1,5 +1,0 @@
-configs:
-  - path: .config/exception.yaml
-    name: exception
-  - path: .config/app.yaml
-    name: app

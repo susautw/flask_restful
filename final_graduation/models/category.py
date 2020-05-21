@@ -4,9 +4,10 @@ import mongoengine as mg
 from bson import ObjectId
 
 from final_graduation.exceptions.no_data_found import NoDataFound
+from final_graduation.kernal import Model
 
 
-class Category(mg.Document):
+class Category(Model):
     name: str = mg.StringField(max_length=100)
     description: str = mg.StringField(max_length=1000)
     _parent: Optional[ObjectId] = mg.ObjectIdField(db_field='parent', null=True)
@@ -15,7 +16,6 @@ class Category(mg.Document):
         'indexes': [
             '#name',
             ('name', 'description'),
-            'parent'
         ]
     }
 
@@ -25,7 +25,7 @@ class Category(mg.Document):
         return cls(
             name=name,
             description=description,
-            parent=obj_id
+            _parent=obj_id
         )
 
     @classmethod

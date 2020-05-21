@@ -26,7 +26,7 @@ def to_float(val: Any, option: 'Option') -> float:
 
 def to_bool(val: Any, option: 'Option') -> bool:
     option.type = bool
-    return val == 'true'
+    return bool(val)
 
 
 def to_path(val: Any, option: 'Option') -> Path:
