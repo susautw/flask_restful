@@ -1,0 +1,10 @@
+POST http://localhost:5000/category
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+test_name
+--WebAppBoundary--
+
+###

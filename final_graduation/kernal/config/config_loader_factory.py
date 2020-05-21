@@ -1,6 +1,6 @@
 from typing import Dict, Type
 
-from . import config as cfg
+from .. import config as cfg
 from .. import utils
 from .. import exceptions
 

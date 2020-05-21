@@ -25,7 +25,7 @@ class AppException(Exception):
     @classmethod
     def _load_codes(cls):
         from final_graduation.kernal.bootstrap import Bootstrap
-        config = Bootstrap.configs['exception']
+        config = Bootstrap.instance().configs['exception']
         assert isinstance(config, ExceptionConfig)
         cls._codes = config.codes
 
