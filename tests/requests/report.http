@@ -1,0 +1,26 @@
+GET http://120.110.115.79:8080/report/5ecaa522572016ecc14836f4
+Accept: application/json
+
+###
+POST http://120.110.115.79:8080/report
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="judge"
+
+5eca85628d44d8850ebfe874
+--WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+5ec5fe00b13b45c9c3b5f40d
+--WebAppBoundary
+Content-Disposition: form-data; name="probability"
+
+0.5
+--WebAppBoundary--
+
+###
+GET http://120.110.115.79:8080/report/5eca85628d44d8850ebfe874/5ec5fe00b13b45c9c3b5f40d
+Accept: application/json
+
+###

@@ -1,0 +1,18 @@
+POST http://120.110.115.79:8080/judge
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+test1
+--WebAppBoundary--
+
+###
+GET http://120.110.115.79:8080/judge
+Accept: application/json
+
+###
+GET http://120.110.115.79:8080/judge/
+Accept: application/json
+
+###

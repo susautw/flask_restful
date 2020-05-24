@@ -18,6 +18,10 @@ class Judge(mg.Document):
     }
 
     @classmethod
+    def create(cls, name: str) -> 'Judge':
+        return cls(name=name)
+
+    @classmethod
     def get_all_judges(cls) -> Iterator['Judge']:
         return cls.objects()
 
@@ -25,5 +29,5 @@ class Judge(mg.Document):
     def get_by_id(cls, obj_id: ObjectId) -> 'Judge':
         query = cls.objects(id=obj_id)
         if query.count() == 0:
-            raise NoDataFound(f'category={obj_id}')
+            raise NoDataFound(f'judge={obj_id}')
         return query[0]

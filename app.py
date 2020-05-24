@@ -1,12 +1,13 @@
+from typing import List
+
 from flask import Flask
 from flask_restful import Api
 
 from app_config import AppConfig
 from final_graduation.config import *
-from final_graduation.controller import HelloWorld, CategoryItemController
-from final_graduation.controller import CategoryController
 from final_graduation.kernal import Response
 from final_graduation.kernal.bootstrap import Bootstrap
+from routes import routes
 
 
 def main():
@@ -29,9 +30,11 @@ def create_app() -> Flask:
 
 
 def register_routes(api: Api, app: Flask):
-    api.add_resource(HelloWorld, '/')
-    api.add_resource(CategoryController, '/category')
-    api.add_resource(CategoryItemController, '/category/<string:category_id>')
+    for cls, route in routes.items():
+        if not isinstance(route, List):
+            route = [route]
+        for item in route:
+            api.add_resource(cls, item)
 
 
 if __name__ == '__main__':
