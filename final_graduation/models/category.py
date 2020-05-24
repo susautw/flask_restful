@@ -16,6 +16,7 @@ class Category(Model):
         'indexes': [
             '#name',
             ('name', 'description'),
+            '_parent'
         ]
     }
 

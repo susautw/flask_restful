@@ -1,4 +1,4 @@
-GET http://localhost:5000/category/5ec5fe00b13b45c9c3b5f40d
+GET http://localhost:5000/category/5eca5becc397c719260f0f45
 Accept: application/json
 
 ###
@@ -12,11 +12,15 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-test3
+test4
 --WebAppBoundary
 Content-Disposition: form-data; name="description"
 
 test
+--WebAppBoundary
+Content-Disposition: form-data; name="parent"
+
+5ec5fe00b13b45c9c3b5f40d
 --WebAppBoundary
 
 ###

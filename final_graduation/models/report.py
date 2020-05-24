@@ -13,7 +13,8 @@ class Report(mg.Document):
     meta = {
         'indexes': [
             ('judge', 'category'),
-            "probability"
+            "probability",
+            "-probability"
         ]
     }
 

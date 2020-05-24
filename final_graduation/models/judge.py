@@ -9,6 +9,14 @@ from final_graduation.exceptions.no_data_found import NoDataFound
 class Judge(mg.Document):
     name: str = mg.StringField(max_length=50)
 
+    meta = {
+        'indexes': [
+            '#name',
+            'name',
+            '-name'
+        ]
+    }
+
     @classmethod
     def get_all_judges(cls) -> Iterator['Judge']:
         return cls.objects()
