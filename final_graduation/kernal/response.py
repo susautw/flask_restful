@@ -1,7 +1,29 @@
+import inspect
 import traceback
-from typing import Dict, Any
+from typing import Dict, Any, Type, Callable
 
 from . import AppException, UnknownError
+
+
+def make_response(f):
+    def inner(*args, **kwargs):
+        response = Response()
+        with response:
+            f(response=response, *args, **kwargs)
+        return response
+
+    return inner
+
+
+def make_response_all_verbs(cls: Type):
+    verbs = [
+        'post', 'get', 'put', 'patch', 'delete'
+    ]
+
+    for name in verbs:
+        if name in cls.__dict__:
+            setattr(cls, name, make_response(cls.__dict__[name]))
+    return cls
 
 
 class Response(dict):
