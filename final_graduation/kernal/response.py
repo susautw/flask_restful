@@ -1,6 +1,5 @@
-import inspect
 import traceback
-from typing import Dict, Any, Type, Callable
+from typing import Dict, Any, Type
 
 from . import AppException, UnknownError
 
@@ -9,7 +8,7 @@ def make_response(f):
     def inner(*args, **kwargs):
         response = Response()
         with response:
-            f(response=response, *args, **kwargs)
+            response.result = f(*args, **kwargs)
         return response
 
     return inner

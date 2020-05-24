@@ -8,16 +8,16 @@ from flask_restful import reqparse
 
 @make_response_all_verbs
 class CategoryController(Resource):
-    def get(self, response):
-        response.result = [category.to_json() for category in models.Category.get_all_categories()]
+    def get(self):
+        return [category.to_json() for category in models.Category.get_all_categories()]
 
-    def post(self, response):
+    def post(self):
         args = self._get_post_req_parser().parse_args()
         parent_id = args['parent']
         parent = models.Category.get_by_id(ObjectId(parent_id)) if parent_id is not None else None
         category = models.Category.create(args['name'], args['description'], parent)
         category.save()
-        response.result = {
+        return {
             'inserted_id': str(category.id)
         }
 
@@ -32,5 +32,5 @@ class CategoryController(Resource):
 
 @make_response_all_verbs
 class CategoryItemController(Resource):
-    def get(self, response, category_id: str):
-        response.result = models.Category.get_by_id(ObjectId(category_id)).to_json()
+    def get(self, category_id: str):
+        return models.Category.get_by_id(ObjectId(category_id)).to_json()
